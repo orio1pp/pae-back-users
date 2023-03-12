@@ -1,11 +1,11 @@
-package controller;
+package com.example.demo.controller;
 
-import Model.Question;
+import com.example.demo.Model.Question;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import service.QuestionService;
+import com.example.demo.service.QuestionService;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ public class QuestionController {
     public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
     }
+
     @PostMapping("questions")
     public ResponseEntity<Question> setMultipleQuestions(List<Question> questions){
         if(questions != null){
@@ -23,6 +24,12 @@ public class QuestionController {
         }
         return ResponseEntity.ok(questions.get(0));
     }
+
+    @GetMapping("questions")
+    public ResponseEntity<List<Question>> getAllQuestions() {
+        return ResponseEntity.ok(List.of(null));
+    }
+
     @GetMapping("test")
     public String RetornString() { return "hola"; }
 }

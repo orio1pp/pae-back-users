@@ -1,9 +1,6 @@
-package Model;
+package com.example.demo.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -12,13 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Question {
-    @Id
-    @Column
-    private long questionary_id;
 
-    @Id
-    @Column
-    private long question_id;
+    @EmbeddedId
+    private QuestionId question_id;
 
     @Column
     private long question_name;
@@ -30,19 +23,19 @@ public class Question {
     private String possible_answers;
 
     public long getQuestionary_id() {
-        return questionary_id;
+        return question_id.getQuestionary_id();
     }
 
     public void setQuestionary_id(long questionary_id) {
-        this.questionary_id = questionary_id;
+        this.question_id.setQuestionary_id(questionary_id);
     }
 
     public long getQuestion_id() {
-        return question_id;
+        return question_id.getQuestion_id();
     }
 
     public void setQuestion_id(long question_id) {
-        this.question_id = question_id;
+        this.question_id.setQuestion_id(question_id);
     }
 
     public long getQuestion_name() {

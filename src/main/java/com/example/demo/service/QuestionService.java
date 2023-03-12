@@ -1,8 +1,8 @@
-package service;
+package com.example.demo.service;
 
-import Model.Question;
+import com.example.demo.Model.Question;
+import com.example.demo.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
-import repository.QuestionRepository;
 
 import java.util.List;
 
