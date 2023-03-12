@@ -2,6 +2,7 @@ package controller;
 
 import Model.Question;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.QuestionService;
@@ -22,4 +23,6 @@ public class QuestionController {
         }
         return ResponseEntity.ok(questions.get(0));
     }
+    @GetMapping("test")
+    public String RetornString() { return "hola"; }
 }
