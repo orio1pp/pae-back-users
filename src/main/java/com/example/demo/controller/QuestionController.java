@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.Model.Question;
+import com.example.demo.model.Question;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.service.QuestionService;
 
@@ -18,8 +19,8 @@ public class QuestionController {
     }
 
     @PostMapping("questions")
-    public ResponseEntity<Question> setMultipleQuestions(List<Question> questions){
-        if(questions != null){
+    public ResponseEntity<Question> setMultipleQuestions(@RequestBody List<Question> questions) {
+        if (questions != null) {
             questionService.setMultipleQuestions(questions);
         }
         return ResponseEntity.ok(questions.get(0));
@@ -27,7 +28,7 @@ public class QuestionController {
 
     @GetMapping("questions")
     public ResponseEntity<List<Question>> getAllQuestions() {
-        return ResponseEntity.ok(List.of(null));
+        return ResponseEntity.ok(questionService.getAllQuestions());
     }
 
     @GetMapping("test")

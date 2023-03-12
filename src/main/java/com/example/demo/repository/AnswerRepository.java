@@ -1,10 +1,9 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Question;
+import com.example.demo.model.Answer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface QuestionRepository extends CrudRepository<Question, Question.QuestionId> {
-
+public interface AnswerRepository extends CrudRepository<Answer, Long> {
 }
