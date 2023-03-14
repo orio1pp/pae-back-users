@@ -2,15 +2,13 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Question;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.demo.service.QuestionService;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class QuestionController {
     private final QuestionService questionService;
 
