@@ -16,6 +16,7 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
+
     @PostMapping("questions")
     public ResponseEntity<Questionary> setMultipleQuestions(@RequestBody List<Questionary> questionaries) {
         if (questionaries != null) {
