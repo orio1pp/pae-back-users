@@ -5,41 +5,39 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Answer")
+@Table(name = "answer")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Answer {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long answer_id;
-
     @Column
-    private String answer;
-
+    private long id_answer;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Question id_question;
     @Column
-    private String answer_type;
+    private long answer;
 
-    public Long getAnswer_id() {
-        return answer_id;
+    public long getId_answer() {
+        return id_answer;
     }
 
-    public void setAnswer_id(Long answer_id) {
-        this.answer_id = answer_id;
+    public void setId_answer(long id_answer) {
+        this.id_answer = id_answer;
     }
 
-    public String getAnswer() {
+    public Question getId_question() {
+        return id_question;
+    }
+
+    public void setId_question(Question id_question) {
+        this.id_question = id_question;
+    }
+
+    public long getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(long answer) {
         this.answer = answer;
-    }
-
-    public String getAnswer_type() {
-        return answer_type;
-    }
-
-    public void setAnswer_type(String answer_type) {
-        this.answer_type = answer_type;
     }
 }
