@@ -7,20 +7,22 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "options")
+@Table(name = "question")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Question {
     @Id
+    @GeneratedValue (strategy = GenerationType.SEQUENCE)
     @Column
     private long question_id;
 
     @Column
-    private String options_id;
+    private String questionText;
 
     @Column
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Options> optionsList;
+
 
     public long getQuestion_id() {
         return question_id;
@@ -30,19 +32,19 @@ public class Question {
         this.question_id = question_id;
     }
 
-    public String getOptions_id() {
-        return options_id;
-    }
-
-    public void setOptions_id(String options_id) {
-        this.options_id = options_id;
-    }
-
     public List<Options> getOptionsList() {
         return optionsList;
     }
 
     public void setOptionsList(List<Options> optionsList) {
         this.optionsList = optionsList;
+    }
+
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
     }
 }

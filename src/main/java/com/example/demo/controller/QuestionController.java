@@ -1,14 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Questionary;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import com.example.demo.model.Question;
 import com.example.demo.service.QuestionService;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin
 public class QuestionController {
     private final QuestionService questionService;
 
@@ -17,19 +15,8 @@ public class QuestionController {
     }
 
 
-    @PostMapping("questions")
-    public ResponseEntity<Questionary> setMultipleQuestions(@RequestBody List<Questionary> questionaries) {
-        if (questionaries != null) {
-            questionService.setMultipleQuestions(questionaries);
-        }
-        return ResponseEntity.ok(questionaries.get(0));
+    @PostMapping("Question")
+    public void insertQuestion(@RequestBody Question question){
+        questionService.insertQuestion(question);
     }
-
-    @GetMapping("questions")
-    public ResponseEntity<List<Questionary>> getAllQuestions() {
-        return ResponseEntity.ok(questionService.getAllQuestions());
-    }
-
-    @GetMapping("test")
-    public String RetornString() { return "hola"; }
 }

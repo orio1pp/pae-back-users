@@ -10,12 +10,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Answer {
     @Id
+    @GeneratedValue (strategy = GenerationType.SEQUENCE)
     @Column
     private long id_answer;
     @OneToOne(fetch = FetchType.LAZY)
     private Question id_question;
     @Column
-    private long answer;
+    private String answer;
+
+    @Column
+    private String type;
 
     public long getId_answer() {
         return id_answer;
@@ -33,11 +37,19 @@ public class Answer {
         this.id_question = id_question;
     }
 
-    public long getAnswer() {
+    public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(long answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

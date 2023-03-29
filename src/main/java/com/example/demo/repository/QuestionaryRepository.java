@@ -1,0 +1,10 @@
+package com.example.demo.repository;
+
+import com.example.demo.model.Options;
+import com.example.demo.model.Questionary;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface QuestionaryRepository extends CrudRepository<Questionary, Long> {
+}
