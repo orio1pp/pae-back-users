@@ -23,6 +23,11 @@ public class Question {
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Options> optionsList;
 
+    public Question(String questionText, List<Options> options) {
+        this.questionText = questionText;
+        this.optionsList = options;
+    }
+
 
     public long getQuestion_id() {
         return question_id;

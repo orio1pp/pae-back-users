@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.DTOs.QuestionDTO;
 import com.example.demo.model.Question;
 import com.example.demo.model.Questionary;
 import com.example.demo.repository.QuestionaryRepository;
@@ -18,13 +19,8 @@ public class QuestionaryService {
     }
 
 
-    public void insertQuestionary(Questionary questionary){
-        /*
-        List<Question> questions = questionary.getQuestions();
-        for(Question question : questions){
-            questionService.insertQuestion(question);
-        }
-         */
-        questionaryRepository.save(questionary);
+    public void insertQuestionary(List<QuestionDTO> questionDTOList){
+        List<Question> questions = questionService.insertOptionsAndGetQuestions(questionDTOList);
+        questionaryRepository.save(new Questionary(questions));
     }
 }

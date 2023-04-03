@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Question;
+import com.example.demo.DTOs.QuestionDTO;
 import com.example.demo.service.QuestionService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,9 +14,8 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
-
-    @PostMapping("Question")
-    public void insertQuestion(@RequestBody Question question){
+    @PostMapping("Question/checkbox")
+    public void insertQuestion(@RequestBody QuestionDTO question){
         questionService.insertQuestion(question);
     }
 }

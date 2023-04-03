@@ -1,9 +1,9 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Options;
+import com.example.demo.model.CheckBox;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OptionsRepository extends CrudRepository<Options, Long> {
+public interface CheckBoxRepository extends CrudRepository<CheckBox, Long> {
 }
