@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.demo.Utils.ConstantsUtils.*;
+
 @Service
 public class OptionsService {
     private final RadioButtonRepository radioButtonRepository;
@@ -29,15 +31,15 @@ public class OptionsService {
         List<Options> options = new ArrayList<Options>();
         for(OptionsDTO option : optionsList){
             switch (type){
-                case "checkbox":
+                case CHCECKBOX_TYPE:
                     CheckBox checkBox = new CheckBox(option.getText());
                     options.add(checkBox);
                     break;
-                case "radiobutton":
+                case RADIOBUTTON_TYPE:
                     RadioButton radioButton = new RadioButton(option.getText());
                     options.add(radioButton);
                     break;
-                case "text":
+                case TEXT_TYPE:
                     Text text = new Text();
                     options.add(text);
                     break;
