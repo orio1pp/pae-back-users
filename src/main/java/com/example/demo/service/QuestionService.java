@@ -21,8 +21,11 @@ public class  QuestionService {
         this.questionRepository = questionRepository;
         this.optionsService = optionsService;
     }
+    
     private List<Options> insertOptions(List<OptionsDTO> options, String type){
-        return optionsService.insertOptions(options, type);
+        if(type != null && !type.isEmpty())
+            return optionsService.insertOptions(options, type);
+        return new ArrayList<Options>();
     }
 
     private Question createQuestion(QuestionDTO question){
