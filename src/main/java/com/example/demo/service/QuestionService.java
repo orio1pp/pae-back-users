@@ -1,29 +1,48 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Questionary;
-import com.example.demo.repository.OptionsRepository;
+import com.example.demo.DTOs.OptionsDTO;
+import com.example.demo.DTOs.QuestionDTO;
+import com.example.demo.model.Options;
+import com.example.demo.model.Question;
 import com.example.demo.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
-public class QuestionService {
+public class  QuestionService {
+
     private final QuestionRepository questionRepository;
-    private final OptionsRepository optionsRepository;
-    public QuestionService(QuestionRepository questionRepository, OptionsRepository optionsRepository) {
+    private final OptionsService optionsService;
+
+    public QuestionService(QuestionRepository questionRepository, OptionsService optionsService) {
         this.questionRepository = questionRepository;
-        this.optionsRepository = optionsRepository;
+        this.optionsService = optionsService;
     }
 
-    public void setMultipleQuestions(List<Questionary> questionaries) {
-        for (Questionary questionary : questionaries) {
-            questionRepository.save(questionary);
-            //for (Options ans : questionary.getOptions()) answerRepository.save(ans);
+    private List<Options> insertOptions(List<OptionsDTO> options, String type){
+        if(type != null && !type.isEmpty())
+            return optionsService.insertOptions(options, type);
+        return new ArrayList<Options>();
+    }
+
+    private Question createQuestion(QuestionDTO question){
+        List<Options> options = insertOptions(question.getOptionsList(), question.getType());
+        return new Question(question.getQuestionText(), options, question.getType());
+    }
+    public List<Question> insertOptionsAndGetQuestions(List<QuestionDTO> questionDTOList){
+        List<Question> questions = new ArrayList<>();
+        for (QuestionDTO questionDTO : questionDTOList){
+            Question question = createQuestion(questionDTO);
+            questions.add(question);
         }
+        return questions;
     }
 
-    public List<Questionary> getAllQuestions() {
-        return (List<Questionary>) questionRepository.findAll();
+    public void insertQuestion(QuestionDTO questionDTO) {
+        Question question = createQuestion(questionDTO);
+        questionRepository.save(question);
     }
 }

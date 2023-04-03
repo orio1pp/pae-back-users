@@ -16,11 +16,16 @@ public class Questionary implements Serializable {
 
     @Id
     @Column
+    @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private long questionary_id;
 
     @Column
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Question> questions;
+
+    public Questionary(List<Question> questions) {
+        this.questions = questions;
+    }
 
     public long getQuestionary_id() {
         return questionary_id;
