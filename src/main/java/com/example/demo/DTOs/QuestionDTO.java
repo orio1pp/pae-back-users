@@ -1,12 +1,16 @@
 package com.example.demo.DTOs;
 
 import com.example.demo.model.Options;
+import lombok.AllArgsConstructor;
 
 
 import java.util.List;
 
+@AllArgsConstructor
 public class QuestionDTO {
     private String questionText;
+
+    private String type;
 
     private List<OptionsDTO> optionsList;
 
@@ -24,5 +28,13 @@ public class QuestionDTO {
 
     public void setOptionsList(List<OptionsDTO> optionsList) {
         this.optionsList = optionsList;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

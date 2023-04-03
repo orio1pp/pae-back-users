@@ -19,13 +19,16 @@ public class Question {
     @Column
     private String questionText;
 
+    private String type;
+
     @Column
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Options> optionsList;
 
-    public Question(String questionText, List<Options> options) {
+    public Question(String questionText, List<Options> options, String type) {
         this.questionText = questionText;
         this.optionsList = options;
+        this.type = type;
     }
 
 
@@ -51,5 +54,13 @@ public class Question {
 
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

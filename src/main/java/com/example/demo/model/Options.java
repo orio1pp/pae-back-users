@@ -16,7 +16,6 @@ public class Options {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long options_id;
 
-
     public Long getOptions_id() {
         return options_id;
     }

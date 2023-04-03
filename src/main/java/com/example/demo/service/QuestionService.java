@@ -21,13 +21,13 @@ public class  QuestionService {
         this.questionRepository = questionRepository;
         this.optionsService = optionsService;
     }
-    private List<Options> insertOptions(List<OptionsDTO> options){
-        return optionsService.insertOptions(options);
+    private List<Options> insertOptions(List<OptionsDTO> options, String type){
+        return optionsService.insertOptions(options, type);
     }
 
     private Question createQuestion(QuestionDTO question){
-        List<Options> options = insertOptions(question.getOptionsList());
-        return new Question(question.getQuestionText(), options);
+        List<Options> options = insertOptions(question.getOptionsList(), question.getType());
+        return new Question(question.getQuestionText(), options, question.getType());
     }
     public List<Question> insertOptionsAndGetQuestions(List<QuestionDTO> questionDTOList){
         List<Question> questions = new ArrayList<>();

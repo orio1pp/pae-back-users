@@ -25,19 +25,19 @@ public class OptionsService {
         this.checkBoxRepository = checkBoxRepository;
         this.textRepository = textRepository;
     }
-    public List<Options> insertOptions(List<OptionsDTO> optionsList) {
+    public List<Options> insertOptions(List<OptionsDTO> optionsList, String type) {
         List<Options> options = new ArrayList<Options>();
         for(OptionsDTO option : optionsList){
-            switch (option.getType()){
-                case "CHECKBOX":
+            switch (type){
+                case "checkbox":
                     CheckBox checkBox = new CheckBox(option.getText());
                     options.add(checkBox);
                     break;
-                case "RADIOBUTTON":
+                case "radiobutton":
                     RadioButton radioButton = new RadioButton(option.getText());
                     options.add(radioButton);
                     break;
-                case "TEXT":
+                case "text":
                     Text text = new Text();
                     options.add(text);
                     break;
