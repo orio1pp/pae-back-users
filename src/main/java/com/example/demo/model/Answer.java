@@ -12,29 +12,29 @@ public class Answer {
     @Id
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
     @Column
-    private long id_answer;
+    private long answerId;
     @OneToOne(fetch = FetchType.LAZY)
-    private Question id_question;
+    private Question questionId;
     @Column
     private String answer;
 
     @Column
     private String type;
 
-    public long getId_answer() {
-        return id_answer;
+    public long getAnswerId() {
+        return answerId;
     }
 
-    public void setId_answer(long id_answer) {
-        this.id_answer = id_answer;
+    public void setAnswerId(long answerId) {
+        this.answerId = answerId;
     }
 
-    public Question getId_question() {
-        return id_question;
+    public Question getQuestionId() {
+        return questionId;
     }
 
-    public void setId_question(Question id_question) {
-        this.id_question = id_question;
+    public void setQuestionId(Question questionId) {
+        this.questionId = questionId;
     }
 
     public String getAnswer() {

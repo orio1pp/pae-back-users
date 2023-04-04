@@ -14,7 +14,7 @@ public class Question {
     @Id
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
     @Column
-    private long question_id;
+    private long questionId;
 
     @Column
     private String questionText;
@@ -32,12 +32,12 @@ public class Question {
     }
 
 
-    public long getQuestion_id() {
-        return question_id;
+    public long getQuestionId() {
+        return questionId;
     }
 
-    public void setQuestion_id(long question_id) {
-        this.question_id = question_id;
+    public void setQuestionId(long questionId) {
+        this.questionId = questionId;
     }
 
     public List<Options> getOptionsList() {
