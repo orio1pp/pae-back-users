@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.DTOs.QuestionDTO;
+import com.example.demo.DTOs.QuestionaryDTO;
 import com.example.demo.model.Question;
 import com.example.demo.model.Questionary;
 import com.example.demo.repository.QuestionaryRepository;
@@ -21,13 +22,13 @@ public class QuestionaryService {
     }
 
 
-    public void insertQuestionary(List<QuestionDTO> questionDTOList){
-        List<Question> questions = questionService.insertOptionsAndGetQuestions(questionDTOList);
-        questionaryRepository.save(new Questionary(questions));
+    public void insertQuestionary(QuestionaryDTO questionaryDTO){
+        List<Question> questions = questionService.insertOptionsAndGetQuestions(questionaryDTO.getQuestions());
+        questionaryRepository.save(new Questionary(questionaryDTO.getName(),questions));
     }
 
-    public List<Question> getQuestions(Long id) {
-        Optional<Questionary> questionary = questionaryRepository.findById(id);
+    public List<Question> getQuestions(String name) {
+        Optional<Questionary> questionary = questionaryRepository.findByName(name);
         if(questionary.isPresent()){
             return questionary.get().getQuestions();
         }

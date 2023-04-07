@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTOs.QuestionDTO;
+import com.example.demo.DTOs.QuestionaryDTO;
 import com.example.demo.model.Question;
 import com.example.demo.model.Questionary;
 import com.example.demo.service.QuestionaryService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class QuestionaryController {
     private final QuestionaryService questionaryService;
 
@@ -18,13 +20,13 @@ public class QuestionaryController {
     }
 
     @PostMapping("Questionary")
-    public void insertQuestionary(@RequestBody List<QuestionDTO> questionDTOList){
-        questionaryService.insertQuestionary(questionDTOList);
+    public void insertQuestionary(@RequestBody QuestionaryDTO questionaryDTO){
+        questionaryService.insertQuestionary(questionaryDTO);
     }
 
     @GetMapping("GetQuestionary")
-    public List<Question> getQuestionary(@RequestParam Long id){
-        return questionaryService.getQuestions(id);
+    public List<Question> getQuestionary(@RequestParam String name){
+        return questionaryService.getQuestions(name);
     }
 
 }

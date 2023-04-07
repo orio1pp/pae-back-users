@@ -31,7 +31,7 @@ public class OptionsService {
         List<Options> options = new ArrayList<Options>();
         for(OptionsDTO option : optionsList){
             switch (type){
-                case CHCECKBOX_TYPE:
+                case CHECKBOX_TYPE:
                     CheckBox checkBox = new CheckBox(option.getText());
                     options.add(checkBox);
                     break;

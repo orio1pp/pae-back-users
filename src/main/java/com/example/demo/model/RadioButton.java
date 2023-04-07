@@ -8,8 +8,6 @@ import org.hibernate.annotations.DiscriminatorOptions;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorValue("RADIOBUTTON")
-@DiscriminatorOptions(force=true)
 
 public class RadioButton extends Options {
 

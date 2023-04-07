@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "Questionary")
@@ -17,22 +16,26 @@ public class Questionary implements Serializable {
     @Id
     @Column
     @GeneratedValue (strategy = GenerationType.SEQUENCE)
-    private long questionary_id;
+    private long questionaryId;
 
     @Column
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Question> questions;
 
-    public Questionary(List<Question> questions) {
+    @Column
+    private String name;
+
+    public Questionary(String name, List<Question> questions) {
+        this.name = name;
         this.questions = questions;
     }
 
-    public long getQuestionary_id() {
-        return questionary_id;
+    public long getQuestionaryId() {
+        return questionaryId;
     }
 
-    public void setQuestionary_id(long questionary_id) {
-        this.questionary_id = questionary_id;
+    public void setQuestionaryId(long questionaryId) {
+        this.questionaryId = questionaryId;
     }
 
     public List<Question> getQuestions() {
@@ -43,6 +46,11 @@ public class Questionary implements Serializable {
         this.questions = questions;
     }
 
+    public String getName() {
+        return name;
+    }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 }
