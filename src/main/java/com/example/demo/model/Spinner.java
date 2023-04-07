@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DiscriminatorOptions;
@@ -8,7 +10,7 @@ import org.hibernate.annotations.DiscriminatorOptions;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class CheckBox extends Options{
+public class Spinner extends Options{
 
     @Column
     private String options;

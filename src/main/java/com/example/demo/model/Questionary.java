@@ -22,7 +22,11 @@ public class Questionary implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Question> questions;
 
-    public Questionary(List<Question> questions) {
+    @Column
+    private String name;
+
+    public Questionary(String name, List<Question> questions) {
+        this.name = name;
         this.questions = questions;
     }
 
@@ -42,6 +46,11 @@ public class Questionary implements Serializable {
         this.questions = questions;
     }
 
+    public String getName() {
+        return name;
+    }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 }

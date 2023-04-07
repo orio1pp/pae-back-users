@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.DTOs.QuestionDTO;
+import com.example.demo.DTOs.QuestionaryDTO;
 import com.example.demo.model.Question;
 import com.example.demo.model.Questionary;
 import com.example.demo.service.QuestionaryService;
@@ -19,8 +20,8 @@ public class QuestionaryController {
     }
 
     @PostMapping("Questionary")
-    public void insertQuestionary(@RequestBody List<QuestionDTO> questionDTOList){
-        questionaryService.insertQuestionary(questionDTOList);
+    public void insertQuestionary(@RequestBody QuestionaryDTO questionaryDTO){
+        questionaryService.insertQuestionary(questionaryDTO);
     }
 
     @GetMapping("GetQuestionary")

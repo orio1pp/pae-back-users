@@ -4,6 +4,7 @@ import com.example.demo.model.Answer;
 import com.example.demo.repository.AnswerRepository;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 
 @Service
@@ -19,4 +20,9 @@ public class AnswerService {
             answerRepository.save(answer);
         }
     }
+
+    public int getTimesOptionSelected(String answer) {
+        return answerRepository.getTimesSelected(answer);
+    }
+
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -44,5 +45,10 @@ public class  QuestionService {
     public void insertQuestion(QuestionDTO questionDTO) {
         Question question = createQuestion(questionDTO);
         questionRepository.save(question);
+    }
+
+    public Question getQuestionById(long questionId) {
+        Optional<Question> question = questionRepository.findById(questionId);
+        return question.get();
     }
 }

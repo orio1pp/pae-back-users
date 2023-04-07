@@ -14,7 +14,7 @@ public class Answer {
     @Column
     private long answerId;
     @OneToOne(fetch = FetchType.LAZY)
-    private Question questionId;
+    private Options options;
     @Column
     private String answer;
 
@@ -27,14 +27,6 @@ public class Answer {
 
     public void setAnswerId(long answerId) {
         this.answerId = answerId;
-    }
-
-    public Question getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(Question questionId) {
-        this.questionId = questionId;
     }
 
     public String getAnswer() {
@@ -51,5 +43,13 @@ public class Answer {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Options getOptions() {
+        return options;
+    }
+
+    public void setOptions(Options options) {
+        this.options = options;
     }
 }

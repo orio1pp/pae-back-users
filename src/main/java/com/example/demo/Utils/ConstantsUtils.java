@@ -5,4 +5,6 @@ public class ConstantsUtils {
     public static final String TEXT_TYPE = "text";
     public static final String RADIOBUTTON_TYPE = "radio";
 
+    public static final String SPPINER_TYPE = "spinner";
+
 }

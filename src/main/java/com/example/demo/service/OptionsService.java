@@ -33,6 +33,7 @@ public class OptionsService {
             switch (type){
                 case CHECKBOX_TYPE:
                     CheckBox checkBox = new CheckBox(option.getText());
+                    checkBoxRepository.save(checkBox);
                     options.add(checkBox);
                     break;
                 case RADIOBUTTON_TYPE:
