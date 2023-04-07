@@ -27,8 +27,8 @@ public class QuestionaryService {
         questionaryRepository.save(new Questionary(questionaryDTO.getName(),questions));
     }
 
-    public List<Question> getQuestions(Long id) {
-        Optional<Questionary> questionary = questionaryRepository.findById(id);
+    public List<Question> getQuestions(String name) {
+        Optional<Questionary> questionary = questionaryRepository.findByName(name);
         if(questionary.isPresent()){
             return questionary.get().getQuestions();
         }

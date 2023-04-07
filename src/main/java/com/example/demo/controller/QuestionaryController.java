@@ -25,8 +25,8 @@ public class QuestionaryController {
     }
 
     @GetMapping("GetQuestionary")
-    public List<Question> getQuestionary(@RequestParam Long id){
-        return questionaryService.getQuestions(id);
+    public List<Question> getQuestionary(@RequestParam String name){
+        return questionaryService.getQuestions(name);
     }
 
 }
