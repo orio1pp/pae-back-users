@@ -28,7 +28,7 @@ public class ImageService {
     }
 
     public byte[] downloadImage(String imageName) {
-        String fullPath = IMAGE_PATH.concat(imageName).concat(".png");
+        String fullPath = IMAGE_PATH.replace("${IMAGE_NAME}", imageName);
         try {
             return Files.readAllBytes(new File(fullPath).toPath());
         } catch (IOException e) {
