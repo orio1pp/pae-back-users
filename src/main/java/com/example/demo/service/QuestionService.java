@@ -31,13 +31,19 @@ public class  QuestionService {
 
     private Question createQuestion(QuestionDTO question){
         List<Options> options = insertOptions(question.getOptionsList(), question.getType());
-        return new Question(question.getQuestionText(), options, question.getType());
+        return new Question(question.getQuestionText(), options, question.getType(), question.getPage());
     }
     public List<Question> insertOptionsAndGetQuestions(List<QuestionDTO> questionDTOList){
         List<Question> questions = new ArrayList<>();
+        int previousPage = 0;
         for (QuestionDTO questionDTO : questionDTOList){
-            Question question = createQuestion(questionDTO);
-            questions.add(question);
+            if(questionDTO.getPage() == previousPage+1 || questionDTO.getPage() == previousPage) {
+                previousPage = questionDTO.getPage();
+                Question question = createQuestion(questionDTO);
+                questions.add(question);
+            }
+            else
+                return null;
         }
         return questions;
     }

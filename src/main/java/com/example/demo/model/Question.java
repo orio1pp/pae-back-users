@@ -21,16 +21,18 @@ public class Question {
 
     private String type;
 
+    private int page;
+
     @Column
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Options> optionsList;
 
-    public Question(String questionText, List<Options> options, String type) {
+    public Question(String questionText, List<Options> options, String type, int page) {
         this.questionText = questionText;
         this.optionsList = options;
         this.type = type;
+        this.page = page;
     }
-
 
     public long getQuestionId() {
         return questionId;
@@ -62,5 +64,13 @@ public class Question {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 }

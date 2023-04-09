@@ -22,7 +22,7 @@ public class Questionary implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Question> questions;
 
-    @Column
+    @Column(unique = true)
     private String name;
 
     public Questionary(String name, List<Question> questions) {

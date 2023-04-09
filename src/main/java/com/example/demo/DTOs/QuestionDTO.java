@@ -12,6 +12,8 @@ public class QuestionDTO {
 
     private String type;
 
+    private int page;
+
     private List<OptionsDTO> optionsList;
 
     public String getQuestionText() {
@@ -36,5 +38,13 @@ public class QuestionDTO {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 }

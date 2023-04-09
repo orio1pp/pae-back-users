@@ -24,14 +24,35 @@ public class QuestionaryService {
 
     public void insertQuestionary(QuestionaryDTO questionaryDTO){
         List<Question> questions = questionService.insertOptionsAndGetQuestions(questionaryDTO.getQuestions());
-        questionaryRepository.save(new Questionary(questionaryDTO.getName(),questions));
+        if(questions != null) {
+            questionaryRepository.save(new Questionary(questionaryDTO.getName(), questions));
+        }
     }
 
-    public List<Question> getQuestions(String name) {
+    public List<List<Question>> getQuestions(String name) {
         Optional<Questionary> questionary = questionaryRepository.findByName(name);
         if(questionary.isPresent()){
-            return questionary.get().getQuestions();
+            List<Question> questions =  questionary.get().getQuestions();
+            return getQuestionsByPage(questions);
         }
         return null;
+    }
+
+    private List<List<Question>> getQuestionsByPage(List<Question> questions){
+        List<List<Question>> questionsByPage = new ArrayList<>();
+        int previousPage = 0;
+        List<Question> questionsInPage = new ArrayList<>();
+        for (Question question : questions){
+            if(question.getPage() != previousPage) {
+                questionsByPage.add(questionsInPage);
+                questionsInPage = new ArrayList<>();
+                previousPage = question.getPage();
+            }
+            questionsInPage.add(question);
+
+        }
+        if(questionsInPage.size()>0)
+            questionsByPage.add(questionsInPage);
+        return questionsByPage;
     }
 }
