@@ -27,8 +27,7 @@ public class Question {
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Options> optionsList;
 
-    @Column
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private QuestionInformation questionInformation;
 
     public Question(String questionText, List<Options> options, String type, int page, QuestionInformation questionInformation) {
