@@ -1,12 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.DTOs.OptionsDTO;
-import com.example.demo.model.CheckBox;
-import com.example.demo.model.Options;
-import com.example.demo.model.RadioButton;
-import com.example.demo.model.Text;
+import com.example.demo.model.*;
 import com.example.demo.repository.CheckBoxRepository;
 import com.example.demo.repository.RadioButtonRepository;
+import com.example.demo.repository.SpinnerRepository;
 import com.example.demo.repository.TextRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +20,13 @@ public class OptionsService {
 
     private final TextRepository textRepository;
 
-    public OptionsService(RadioButtonRepository radioButtonRepository, CheckBoxRepository checkBoxRepository, TextRepository textRepository) {
+    private final SpinnerRepository spinnerRepository;
+
+    public OptionsService(RadioButtonRepository radioButtonRepository, CheckBoxRepository checkBoxRepository, TextRepository textRepository, SpinnerRepository spinnerRepository) {
         this.radioButtonRepository = radioButtonRepository;
         this.checkBoxRepository = checkBoxRepository;
         this.textRepository = textRepository;
+        this.spinnerRepository = spinnerRepository;
     }
     public List<Options> insertOptions(List<OptionsDTO> optionsList, String type) {
         List<Options> options = new ArrayList<Options>();
@@ -42,6 +43,10 @@ public class OptionsService {
                 case TEXT_TYPE:
                     Text text = new Text();
                     options.add(text);
+                    break;
+                case SPINNER_TYPE:
+                    Spinner spinner = new Spinner();
+                    options.add(spinner);
                     break;
             }
         }
