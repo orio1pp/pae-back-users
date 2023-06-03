@@ -31,7 +31,8 @@ public class  QuestionService {
 
     private Question createQuestion(QuestionDTO question){
         List<Options> options = insertOptions(question.getOptionsList(), question.getType());
-        return new Question(question.getQuestionText(), options, question.getType(), question.getPage(), question.getQuestionInformation());
+        return new Question(question.getQuestionText(), options, question.getType(), question.getPage(),
+                question.getQuestionInformation(), question.getTraduccion());
     }
     public List<Question> insertOptionsAndGetQuestions(List<QuestionDTO> questionDTOList){
         List<Question> questions = new ArrayList<>();

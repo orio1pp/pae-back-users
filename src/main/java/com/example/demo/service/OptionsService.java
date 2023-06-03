@@ -33,11 +33,11 @@ public class OptionsService {
         for(OptionsDTO option : optionsList){
             switch (type){
                 case CHECKBOX_TYPE:
-                    CheckBox checkBox = new CheckBox(option.getText());
+                    CheckBox checkBox = new CheckBox(option.getText(), option.getTraduccion());
                     options.add(checkBox);
                     break;
                 case RADIOBUTTON_TYPE:
-                    RadioButton radioButton = new RadioButton(option.getText());
+                    RadioButton radioButton = new RadioButton(option.getText(), option.getTraduccion());
                     options.add(radioButton);
                     break;
                 case TEXT_TYPE:
@@ -45,7 +45,7 @@ public class OptionsService {
                     options.add(text);
                     break;
                 case SPINNER_TYPE:
-                    Spinner spinner = new Spinner();
+                    Spinner spinner = new Spinner(option.getText(), option.getTraduccion());
                     options.add(spinner);
                     break;
             }

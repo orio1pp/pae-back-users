@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "QuestionInformation")
 @AllArgsConstructor
@@ -22,6 +24,9 @@ public class QuestionInformation {
 
     @Column(unique = true)
     private String imageName;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Traduccion> traduccion;
 
     public long getId() {
         return id;
@@ -53,5 +58,13 @@ public class QuestionInformation {
 
     public void setImageName(String imageName) {
         this.imageName = imageName;
+    }
+
+    public List<Traduccion> getTraduccion() {
+        return traduccion;
+    }
+
+    public void setTraduccion(List<Traduccion> traduccion) {
+        this.traduccion = traduccion;
     }
 }

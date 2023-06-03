@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
+import com.example.demo.DTOs.AnswerSelectedDTO;
 import com.example.demo.model.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.demo.Utils.ConstantsUtils.*;
@@ -24,6 +26,37 @@ public class BasicSatisticService {
         Question question = questionService.getQuestionById(question_id);
         List<Options> optionsList = question.getOptionsList();
         return getMostSelectedOption(optionsList, question.getType());
+    }
+
+    public List<AnswerSelectedDTO> getTimesSelectedAnswers(Long questionId) {
+        Question question = questionService.getQuestionById(questionId);
+        List<Options> optionsList = question.getOptionsList();
+        return getTimesSelected(optionsList, question.getType());
+    }
+
+    private List<AnswerSelectedDTO> getTimesSelected(List<Options> options, String type){
+        List<AnswerSelectedDTO> answersSelected = new ArrayList<AnswerSelectedDTO>();
+        for (Options option: options){
+            int timesOptionSelected = getNumTimes(type, option);
+            String optionText = getOptionText(option, type);
+            AnswerSelectedDTO answerSelectedDTO = new AnswerSelectedDTO(timesOptionSelected, optionText);
+            answersSelected.add(answerSelectedDTO);
+        }
+        return  answersSelected;
+    }
+
+    private String getOptionText(Options option, String type){
+        switch (type){
+            case CHECKBOX_TYPE:
+                return ((CheckBox) option).getOptions();
+            case TEXT_TYPE:
+                return "";
+            case RADIOBUTTON_TYPE:
+                return ((RadioButton) option).getOptions();
+            case SPINNER_TYPE:
+                return ((Spinner) option).getOptions();
+        }
+        return "";
     }
 
     private Options getMostSelectedOption(List<Options>optionsList, String type){
@@ -67,5 +100,4 @@ public class BasicSatisticService {
     private int getNumTimesOptionSelected(String answer){
         return answerService.getTimesOptionSelected(answer);
     }
-
 }

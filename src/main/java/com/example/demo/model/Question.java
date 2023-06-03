@@ -30,12 +30,16 @@ public class Question {
     @OneToOne(cascade = CascadeType.ALL)
     private QuestionInformation questionInformation;
 
-    public Question(String questionText, List<Options> options, String type, int page, QuestionInformation questionInformation) {
+    @OneToOne(cascade = CascadeType.ALL)
+    private Traduccion traduccion;
+
+    public Question(String questionText, List<Options> options, String type, int page, QuestionInformation questionInformation, Traduccion traduccion) {
         this.questionText = questionText;
         this.optionsList = options;
         this.type = type;
         this.page = page;
         this.questionInformation = questionInformation;
+        this.traduccion = traduccion;
     }
 
     public long getQuestionId() {
@@ -84,5 +88,13 @@ public class Question {
 
     public void setQuestionInformation(QuestionInformation questionInformation) {
         this.questionInformation = questionInformation;
+    }
+
+    public Traduccion getTraduccion() {
+        return traduccion;
+    }
+
+    public void setTraduccion(Traduccion traduccion) {
+        this.traduccion = traduccion;
     }
 }

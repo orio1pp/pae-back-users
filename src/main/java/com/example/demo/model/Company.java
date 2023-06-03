@@ -26,6 +26,9 @@ public class Company {
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<PageInformation> pageInformationList;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Traduccion> traduccion;
+
     public long getId() {
         return id;
     }
@@ -56,5 +59,13 @@ public class Company {
 
     public void setPageInformationList(List<PageInformation> pageInformationList) {
         this.pageInformationList = pageInformationList;
+    }
+
+    public List<Traduccion> getTraduccion() {
+        return traduccion;
+    }
+
+    public void setTraduccion(List<Traduccion> traduccion) {
+        this.traduccion = traduccion;
     }
 }
