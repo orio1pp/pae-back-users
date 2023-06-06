@@ -24,22 +24,43 @@ public class Question {
     private int page;
 
     @Column
+    private String compulsory;
+
+    @Column
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Options> optionsList;
 
     @OneToOne(cascade = CascadeType.ALL)
     private QuestionInformation questionInformation;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    private List<Question> questionsRelated;
+
+    @Column
+    private String answerToQuestionsRelated;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Traduccion traduccion;
 
-    public Question(String questionText, List<Options> options, String type, int page, QuestionInformation questionInformation, Traduccion traduccion) {
+    public Question(String questionText, List<Options> options, String type, int page, QuestionInformation questionInformation, Traduccion traduccion, String compulsory, List<Question> questionsRelated,
+                    String answerToQuestionsRelated) {
         this.questionText = questionText;
         this.optionsList = options;
         this.type = type;
         this.page = page;
         this.questionInformation = questionInformation;
         this.traduccion = traduccion;
+        this.compulsory = compulsory;
+        this.questionsRelated = questionsRelated;
+        this.answerToQuestionsRelated = answerToQuestionsRelated;
+    }
+
+    public List<Question> getQuestionsRelated() {
+        return questionsRelated;
+    }
+
+    public void setQuestionsRelated(List<Question> questionsRelated) {
+        this.questionsRelated = questionsRelated;
     }
 
     public long getQuestionId() {
@@ -96,5 +117,21 @@ public class Question {
 
     public void setTraduccion(Traduccion traduccion) {
         this.traduccion = traduccion;
+    }
+
+    public String getCompulsory() {
+        return compulsory;
+    }
+
+    public void setCompulsory(String compulsory) {
+        this.compulsory = compulsory;
+    }
+
+    public String getAnswerToQuestionsRelated() {
+        return answerToQuestionsRelated;
+    }
+
+    public void setAnswerToQuestionsRelated(String answerToQuestionsRelated) {
+        this.answerToQuestionsRelated = answerToQuestionsRelated;
     }
 }

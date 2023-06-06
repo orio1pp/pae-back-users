@@ -1,6 +1,7 @@
 package com.example.demo.DTOs;
 
 import com.example.demo.model.Options;
+import com.example.demo.model.Question;
 import com.example.demo.model.QuestionInformation;
 import com.example.demo.model.Traduccion;
 import lombok.AllArgsConstructor;
@@ -18,9 +19,15 @@ public class QuestionDTO {
 
     private List<OptionsDTO> optionsList;
 
+    private List<Question> questionsRelated;
+
     private QuestionInformation questionInformation;
 
     private Traduccion traduccion;
+
+    private String compulsory;
+
+    private String answerToQuestionsRelated;
 
     public String getQuestionText() {
         return questionText;
@@ -68,5 +75,33 @@ public class QuestionDTO {
 
     public void setTraduccions(Traduccion traduccion) {
         this.traduccion = traduccion;
+    }
+
+    public void setTraduccion(Traduccion traduccion) {
+        this.traduccion = traduccion;
+    }
+
+    public String getCompulsory() {
+        return compulsory;
+    }
+
+    public void setCompulsory(String compulsory) {
+        this.compulsory = compulsory;
+    }
+
+    public List<Question> getQuestionsRelated() {
+        return questionsRelated;
+    }
+
+    public String getAnswerToQuestionsRelated() {
+        return answerToQuestionsRelated;
+    }
+
+    public void setAnswerToQuestionsRelated(String answerToQuestionsRelated) {
+        this.answerToQuestionsRelated = answerToQuestionsRelated;
+    }
+
+    public void setQuestionsRelated(List<Question> questionsRelated) {
+        this.questionsRelated = questionsRelated;
     }
 }

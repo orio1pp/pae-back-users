@@ -34,18 +34,22 @@ public class OptionsService {
             switch (type){
                 case CHECKBOX_TYPE:
                     CheckBox checkBox = new CheckBox(option.getText(), option.getTraduccion());
+                    checkBox.setOptionsList(option.getOptionsList());
                     options.add(checkBox);
                     break;
                 case RADIOBUTTON_TYPE:
                     RadioButton radioButton = new RadioButton(option.getText(), option.getTraduccion());
+                    radioButton.setOptionsList(option.getOptionsList());
                     options.add(radioButton);
                     break;
                 case TEXT_TYPE:
-                    Text text = new Text();
+                    Text text = new Text(option.getTypeChar(), option.getMaxChars());
+                    text.setOptionsList(option.getOptionsList());
                     options.add(text);
                     break;
                 case SPINNER_TYPE:
                     Spinner spinner = new Spinner(option.getText(), option.getTraduccion());
+                    spinner.setOptionsList(option.getOptionsList());
                     options.add(spinner);
                     break;
             }
