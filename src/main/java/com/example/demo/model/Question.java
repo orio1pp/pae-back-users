@@ -34,16 +34,13 @@ public class Question {
     private QuestionInformation questionInformation;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private List<Question> questionsRelated;
-
-    @Column
-    private String answerToQuestionsRelated;
+    private List<AnswerRelated> answerRelateds;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Traduccion traduccion;
 
-    public Question(String questionText, List<Options> options, String type, int page, QuestionInformation questionInformation, Traduccion traduccion, String compulsory, List<Question> questionsRelated,
-                    String answerToQuestionsRelated) {
+    public Question(String questionText, List<Options> options, String type, int page, QuestionInformation questionInformation, Traduccion traduccion, String compulsory,
+                    List<AnswerRelated> answerRelated) {
         this.questionText = questionText;
         this.optionsList = options;
         this.type = type;
@@ -51,16 +48,7 @@ public class Question {
         this.questionInformation = questionInformation;
         this.traduccion = traduccion;
         this.compulsory = compulsory;
-        this.questionsRelated = questionsRelated;
-        this.answerToQuestionsRelated = answerToQuestionsRelated;
-    }
-
-    public List<Question> getQuestionsRelated() {
-        return questionsRelated;
-    }
-
-    public void setQuestionsRelated(List<Question> questionsRelated) {
-        this.questionsRelated = questionsRelated;
+        this.answerRelateds = answerRelated;
     }
 
     public long getQuestionId() {
@@ -127,11 +115,11 @@ public class Question {
         this.compulsory = compulsory;
     }
 
-    public String getAnswerToQuestionsRelated() {
-        return answerToQuestionsRelated;
+    public List<AnswerRelated> getAnswerRelateds() {
+        return answerRelateds;
     }
 
-    public void setAnswerToQuestionsRelated(String answerToQuestionsRelated) {
-        this.answerToQuestionsRelated = answerToQuestionsRelated;
+    public void setAnswerRelateds(List<AnswerRelated> answerRelateds) {
+        this.answerRelateds = answerRelateds;
     }
 }
