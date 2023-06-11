@@ -14,7 +14,7 @@ import java.util.List;
 public class Options {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long optionsId;
+    private Long optionsId;z
 
     @Column
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})

@@ -18,7 +18,7 @@ public class QuestionDTO {
 
     private QuestionInformation questionInformation;
 
-    private Traduccion traduccion;
+    private List<Traduccion> traduccion;
 
     private String compulsory;
 
@@ -64,15 +64,11 @@ public class QuestionDTO {
         this.questionInformation = questionInformation;
     }
 
-    public Traduccion getTraduccion() {
+    public List<Traduccion> getTraduccion() {
         return traduccion;
     }
 
-    public void setTraduccions(Traduccion traduccion) {
-        this.traduccion = traduccion;
-    }
-
-    public void setTraduccion(Traduccion traduccion) {
+    public void setTraduccion(List<Traduccion> traduccion) {
         this.traduccion = traduccion;
     }
 

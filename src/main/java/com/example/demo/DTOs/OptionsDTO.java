@@ -12,7 +12,7 @@ public class OptionsDTO {
 
     private int maxChars;
 
-    private Traduccion traduccion;
+    private List<Traduccion> traduccion;
 
     private List<Options> optionsList;
 
@@ -24,7 +24,7 @@ public class OptionsDTO {
         this.text = text;
     }
 
-    public Traduccion getTraduccion() {
+    public List<Traduccion> getTraduccion() {
         return traduccion;
     }
 
@@ -44,7 +44,7 @@ public class OptionsDTO {
         this.maxChars = maxChars;
     }
 
-    public void setTraduccion(Traduccion traduccion) {
+    public void setTraduccion(List<Traduccion> traduccion) {
         this.traduccion = traduccion;
     }
 

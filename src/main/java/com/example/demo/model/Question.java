@@ -36,10 +36,10 @@ public class Question {
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<AnswerRelated> answerRelateds;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Traduccion traduccion;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Traduccion> traduccion;
 
-    public Question(String questionText, List<Options> options, String type, int page, QuestionInformation questionInformation, Traduccion traduccion, String compulsory,
+    public Question(String questionText, List<Options> options, String type, int page, QuestionInformation questionInformation, List<Traduccion> traduccion, String compulsory,
                     List<AnswerRelated> answerRelated) {
         this.questionText = questionText;
         this.optionsList = options;
@@ -99,11 +99,11 @@ public class Question {
         this.questionInformation = questionInformation;
     }
 
-    public Traduccion getTraduccion() {
+    public List<Traduccion> getTraduccion() {
         return traduccion;
     }
 
-    public void setTraduccion(Traduccion traduccion) {
+    public void setTraduccion(List<Traduccion> traduccion) {
         this.traduccion = traduccion;
     }
 

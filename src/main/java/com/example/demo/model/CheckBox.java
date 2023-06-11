@@ -3,7 +3,8 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DiscriminatorOptions;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -14,8 +15,8 @@ public class CheckBox extends Options{
     private String options;
 
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Traduccion traduccion;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Traduccion> traduccion;
 
     public String getOptions() {
         return options;
@@ -25,11 +26,11 @@ public class CheckBox extends Options{
         this.options = options;
     }
 
-    public Traduccion getTraduccion() {
+    public List<Traduccion> getTraduccion() {
         return traduccion;
     }
 
-    public void setTraduccion(Traduccion traduccion) {
+    public void setTraduccion(List<Traduccion> traduccion) {
         this.traduccion = traduccion;
     }
 }
