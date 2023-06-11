@@ -44,7 +44,6 @@ public class OptionsService {
                     break;
                 case TEXT_TYPE:
                     Text text = new Text(option.getTypeChar(), option.getMaxChars());
-                    text.setOptionsList(option.getOptionsList());
                     options.add(text);
                     break;
                 case SPINNER_TYPE:

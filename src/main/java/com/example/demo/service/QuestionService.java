@@ -24,7 +24,7 @@ public class  QuestionService {
     }
 
     private List<Options> insertOptions(List<OptionsDTO> options, String type){
-        if(type != null && !type.isEmpty())
+        if(type != null && !type.isEmpty() && !type.equals("text"))
             return optionsService.insertOptions(options, type);
         return new ArrayList<Options>();
     }
