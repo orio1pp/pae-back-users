@@ -33,7 +33,7 @@ public class Question {
     @OneToOne(cascade = CascadeType.ALL)
     private QuestionInformation questionInformation;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<AnswerRelated> answerRelateds;
 
     @OneToMany(cascade = CascadeType.ALL)

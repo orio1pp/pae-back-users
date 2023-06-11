@@ -11,9 +11,11 @@ import java.util.List;
 @NoArgsConstructor
 public class AnswerRelated {
     @Id
+    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @Column
     private long id;
     @Column
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<Question> questionsRelated;
     @Column
     private String answer;
