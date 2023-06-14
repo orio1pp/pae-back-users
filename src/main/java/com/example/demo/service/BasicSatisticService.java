@@ -81,6 +81,7 @@ public class BasicSatisticService {
                 return getNumTimesCheckRadio((RadioButton) option);
             case SPINNER_TYPE:
                 return getNumTimesCheckSpinner((Spinner) option);
+
         }
         return 0;
     }

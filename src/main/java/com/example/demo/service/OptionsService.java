@@ -42,6 +42,16 @@ public class OptionsService {
                     radioButton.setOptionsList(option.getOptionsList());
                     options.add(radioButton);
                     break;
+                case FISTS_TYPE:
+                    RadioButton fists = new RadioButton(option.getText(), option.getTraduccion());
+                    fists.setOptionsList(option.getOptionsList());
+                    options.add(fists);
+                    break;
+                case SEMAPHOR_TYPE:
+                    RadioButton semaphor = new RadioButton(option.getText(), option.getTraduccion());
+                    semaphor.setOptionsList(option.getOptionsList());
+                    options.add(semaphor);
+                    break;
                 case TEXT_TYPE:
                     Text text = new Text(option.getTypeChar(), option.getMaxChars());
                     options.add(text);
